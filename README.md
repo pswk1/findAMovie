@@ -1,4 +1,4 @@
-# findamovie
+# Find A Movie
 
 ## Description
 The application utilizes the [OMDB API](http://www.omdbapi.com/) to allow users to search for popular movie titles and their relevant information.
