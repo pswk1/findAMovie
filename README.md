@@ -18,8 +18,7 @@ The application utilizes the [OMDB API](http://www.omdbapi.com/) to allow users 
 - Clone this repository into your machine.
 - Run ```npm install``` to install dependencies.
 - Obtain a free API key for the OMDB API [here](http://www.omdbapi.com/apikey.aspx).
-- If you are NOT going to commit to your cloned repo and use the app locally, enter your API key in the API file in utils [here](https://github.com/pswk1/findamovie/blob/main/src/utils/API.js).
-    - If you clone this repository, that link won't work, please proceed to the utils directory in your cloned repo.
+- If you are NOT going to commit to your cloned repo and use the app locally, enter your API key in the API file in the utils directory [here](https://github.com/pswk1/findamovie/blob/main/src/utils/API.js).
     - Enter the key in the KEY variable: ```const KEY = '&apikey=';```
 - If you plan on committing to your cloned repo, read about environment variables [here](https://create-react-app.dev/docs/adding-custom-environment-variables/).
 - Run ```npm start``` at the root of your repository to start the application.
