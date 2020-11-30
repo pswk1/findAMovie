@@ -1,18 +1,8 @@
 import React, { useState } from 'react';
 import VotesTable from './VotesTable';
-import {
-	Button,
-	ButtonGroup,
-	Grid,
-	Input,
-	List,
-	ListItem,
-	Typography,
-} from '@material-ui/core/';
-
+import { Button, ButtonGroup, Grid, Input, List, ListItem, Typography } from '@material-ui/core/';
 import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
 import ThumbDownOutlinedIcon from '@material-ui/icons/ThumbDownOutlined';
-
 import MovieDetails from './MovieDetails';
 import API from '../utils/API';
 
@@ -56,14 +46,18 @@ const Search = () => {
 			});
 	};
 
+	// Store movies that have received votes in localStorage
 	const thumbsUp = (event) => {
 		event.preventDefault();
 		const title = event.currentTarget.value;
 		if (localStorage.getItem(title) === null) {
+			// localStorage data must be stored in strings
 			localStorage.setItem(title, JSON.stringify({ up: 1, down: 0 }));
 		} else {
+			// parse into object to manipulate data
 			let movieVotes = JSON.parse(localStorage.getItem(title));
 			movieVotes.up++;
+			// stringify again to store it back
 			let thumbedUpMovie = JSON.stringify(movieVotes);
 			localStorage.setItem(title, thumbedUpMovie);
 		}
@@ -82,6 +76,7 @@ const Search = () => {
 		}
 	};
 
+	// Store the voted movies in an array
 	let votesArr = [];
 	let title;
 	let votes;
@@ -92,6 +87,7 @@ const Search = () => {
 		votesArr.push([title, votes]);
 	}
 	
+	// Filter out non-movie data, if any
 	votesArr = votesArr.filter((movie) => movie[1].hasOwnProperty('up') && movie[1].hasOwnProperty('down'));
 
 	const movieTitles = movies.map(({ Title }, index) => (
