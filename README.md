@@ -22,6 +22,8 @@ The application utilizes the [OMDB API](http://www.omdbapi.com/) to allow users 
 - If you plan on committing to your cloned repo, read about environment variables [here](https://create-react-app.dev/docs/adding-custom-environment-variables/).
 - Run ```npm start``` at the root of your repository to start the application.
 
+<img src='/img/findAMovieDemo.png' alt='demo screenshot'>
+
 ## Contributors
 Developed by [Peter Kang](https://github.com/pswk1).  
 
