@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import VotesTable from './VotesTable';
-import { Button, ButtonGroup, Grid, Input, List, ListItem, Typography } from '@material-ui/core/';
+import {
+	Button,
+	ButtonGroup,
+	Grid,
+	Input,
+	List,
+	ListItem,
+	Typography,
+} from '@material-ui/core/';
 import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
 import ThumbDownOutlinedIcon from '@material-ui/icons/ThumbDownOutlined';
 import MovieDetails from './MovieDetails';
@@ -76,19 +84,22 @@ const Search = () => {
 		}
 	};
 
-	// Store the voted movies in an array
-	let votesArr = [];
-	let title;
-	let votes;
+	const showVotes = () => {
+		let votesArr = [];
 
-	for (let i = 0; i < localStorage.length; i++) {
-		title = localStorage.key(i);
-		votes = JSON.parse(localStorage.getItem(localStorage.key(i)));
-		votesArr.push([title, votes]);
-	}
-	
-	// Filter out non-movie data, if any
-	votesArr = votesArr.filter((movie) => movie[1].hasOwnProperty('up') && movie[1].hasOwnProperty('down'));
+		Object.keys(localStorage).forEach((key) => {
+			votesArr.push([key, JSON.parse(localStorage.getItem(key))]);
+		});
+
+		// Filter out non-movie data, if any
+		votesArr = votesArr.filter(
+			(movie) =>
+				movie[1].hasOwnProperty('up') && movie[1].hasOwnProperty('down')
+		);
+
+		return votesArr;
+	};
+
 
 	const movieTitles = movies.map(({ Title }, index) => (
 		<ListItem style={{ display: 'block', marginTop: '10px' }} key={index}>
@@ -137,7 +148,7 @@ const Search = () => {
 			</Grid>
 
 			<Grid item xs={4}>
-				<VotesTable voteInfo={votesArr} />
+				<VotesTable voteInfo={showVotes()} />
 			</Grid>
 		</Grid>
 	);

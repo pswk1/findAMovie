@@ -12,13 +12,16 @@ const useStyles = makeStyles({
 		flexDirection: 'column',
 		padding: '20px'
 	},
+	mainHeader: {
+		marginBottom: '0.5em',
+	}
 });
 
 function App() {
 	const classes = useStyles();
 	return (
 		<Grid className={classes.root}>
-			<Typography variant='h1'>Find a Movie!</Typography>
+			<Typography className={classes.mainHeader} variant='h1'>Find a Movie!</Typography>
 			<Search/>
 		</Grid>
 	);
